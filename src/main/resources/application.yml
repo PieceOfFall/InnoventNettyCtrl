@@ -1,0 +1,3 @@
+netty:
+  websocket-server:
+    port: 9527
