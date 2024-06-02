@@ -26,13 +26,13 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<TextWebS
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
         // 添加连接
-        System.out.println("Client connected: " + ctx.channel());
+        log.info("Client connected: " + ctx.channel());
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) {
         // 断开连接
-        System.out.println("Client disconnected: " + ctx.channel());
+        log.info("Client disconnected: " + ctx.channel());
     }
 
     @Override
