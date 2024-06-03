@@ -28,6 +28,8 @@ public class WebSocketServer {
 
     @Value("${netty.websocket-server.port}")
     private Integer websocketServerPort;
+    @Value("${netty.websocket-server.prefix}")
+    private String prefix;
 
     private final WebSocketServerHandler webSocketServerHandler;
 
@@ -50,7 +52,7 @@ public class WebSocketServer {
                         ch.pipeline()
                                 .addLast(new HttpServerCodec())
                                 .addLast(new HttpObjectAggregator(65536))
-                                .addLast(new WebSocketServerProtocolHandler("/ctrl"))
+                                .addLast(new WebSocketServerProtocolHandler(prefix))
                                 .addLast(handlerGroup, webSocketServerHandler);
                     }
                 });

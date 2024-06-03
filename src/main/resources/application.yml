@@ -1,3 +1,9 @@
 netty:
   websocket-server:
+    prefix: /ctrl
     port: 9527
+
+debug: true
+logging:
+  level:
+    com.fall.nettyctrl.handler: debug

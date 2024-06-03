@@ -19,7 +19,7 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<TextWebS
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame textWebSocketFrame) {
-        System.out.println("Received message: " + textWebSocketFrame.text());
+        log.debug("Received message: " + textWebSocketFrame.text());
         ctx.channel().writeAndFlush(new TextWebSocketFrame("Server received: " + textWebSocketFrame.text()));
     }
 
