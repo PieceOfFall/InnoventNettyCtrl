@@ -1,4 +1,4 @@
-package com.fall.nettyctrl.handler;
+package com.fall.nettyctrl.handler.msg;
 
 import com.fall.nettyctrl.vo.WsMsg;
 import io.netty.channel.ChannelHandlerContext;
