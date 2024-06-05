@@ -1,7 +1,7 @@
 package com.fall.nettyctrl.handler.msg;
 
 import com.fall.nettyctrl.netty.NettySender;
-import com.fall.nettyctrl.vo.PositionCommand;
+import com.fall.nettyctrl.vo.MediaCommand;
 import com.fall.nettyctrl.vo.PositioningMsg;
 import com.fall.nettyctrl.vo.WsMsg;
 import io.netty.channel.ChannelHandlerContext;
@@ -17,7 +17,7 @@ import java.util.Map;
 
 
 /**
- * 定位消息处理器
+ * 定位消息处理器 (音频控制)
  *
  * @author FAll
  * @date 2024年06月03日 13:25
@@ -28,7 +28,7 @@ import java.util.Map;
 public class PositioningMsgHandler implements MsgHandler {
 
     @Setter
-    private List<PositionCommand> commands;
+    private List<MediaCommand> commands;
     private final NettySender nettySender;
     @Value("${stations.media-ip}")
     private String mediaIp;
@@ -45,8 +45,8 @@ public class PositioningMsgHandler implements MsgHandler {
         if (msg instanceof PositioningMsg positioningMsg) {
             for (Map.Entry<Integer, String> entry : positioningMsg.getPosMap().entrySet()) {
                 var stationId = entry.getKey();
-                var positionCommand = commands.get(stationId);
-                var commandHexStr = positionCommand.getCommand(entry.getValue());
+                var mediaCommand = commands.get(stationId);
+                var commandHexStr = mediaCommand.getCommand(entry.getValue());
                 nettySender.sendMsgAsync(NettySender.hexStringToByteBuf(commandHexStr), mediaIp, mediaPort);
             }
             log.info("Received positioning message: " + positioningMsg.getPosMap());

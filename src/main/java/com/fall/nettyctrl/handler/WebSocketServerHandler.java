@@ -1,6 +1,5 @@
 package com.fall.nettyctrl.handler;
 
-import com.fall.nettyctrl.handler.msg.MsgHandler;
 import com.fall.nettyctrl.handler.msg.PositioningMsgHandler;
 import com.fall.nettyctrl.handler.msg.WebPanelMsgHandler;
 import com.fall.nettyctrl.vo.PositioningMsg;
@@ -38,7 +37,7 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<TextWebS
         switch (msg) {
             case PositioningMsg positioningMsg -> positioningMsgHandler.handleMsg(ctx, positioningMsg);
             case WebPanelMsg webPanelMsg -> webPanelMsgHandler.handleMsg(ctx, webPanelMsg);
-            default -> throw new IllegalStateException("Unexpected value: " + msg);
+            default -> throw new IllegalStateException("Unexpected msg value: " + msg);
         }
 
         ctx.channel().writeAndFlush(new TextWebSocketFrame("Server received: " + textWebSocketFrame.text()));

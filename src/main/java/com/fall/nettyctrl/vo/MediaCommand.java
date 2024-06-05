@@ -7,7 +7,7 @@ import lombok.Data;
  * @date 2024年06月04日 10:09
  */
 @Data
-public class PositionCommand {
+public class MediaCommand {
     private Integer id;
     private String high;
     private String medium;

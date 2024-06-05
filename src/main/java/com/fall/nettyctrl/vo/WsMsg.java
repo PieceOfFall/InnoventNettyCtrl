@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
-        property = "clientName")
+        property = "_type")
 @JsonSubTypes({
         @JsonSubTypes.Type(value = PositioningMsg.class, name = "positioning"),
         @JsonSubTypes.Type(value = WebPanelMsg.class, name = "web-panel")
@@ -22,6 +22,7 @@ public class WsMsg {
     public static final String WEB_PANEL = "web-panel";
 
     private String clientName;
+    private String clientAlias;
     private Integer clientId;
     private Long timestamp;
 }
