@@ -3,7 +3,7 @@ package com.fall.nettyctrl.handler;
 import com.fall.nettyctrl.handler.msg.positioning.PositioningMsgHandler;
 import com.fall.nettyctrl.handler.msg.panel.WebPanelMsgHandler;
 import com.fall.nettyctrl.vo.positioning.PositioningMsg;
-import com.fall.nettyctrl.vo.param.WebPanelMsg;
+import com.fall.nettyctrl.vo.panel.WebPanelMsg;
 import com.fall.nettyctrl.vo.WsMsg;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

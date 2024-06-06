@@ -25,15 +25,15 @@ import java.util.Map;
  */
 @Slf4j
 @Component
-@ConfigurationProperties(prefix = "stations")
+@ConfigurationProperties(prefix = "positioning")
 public class PositioningMsgHandler implements IMsgHandler {
 
     @Setter
     private List<MediaCommand> commands;
     private final NettySender nettySender;
-    @Value("${stations.media-ip}")
+    @Value("${positioning.media-ip}")
     private String mediaIp;
-    @Value("${stations.media-port}")
+    @Value("${positioning.media-port}")
     private Integer mediaPort;
 
     @Autowired

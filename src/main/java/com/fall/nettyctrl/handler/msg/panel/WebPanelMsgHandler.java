@@ -1,7 +1,7 @@
 package com.fall.nettyctrl.handler.msg.panel;
 
 import com.fall.nettyctrl.handler.msg.IMsgHandler;
-import com.fall.nettyctrl.vo.param.WebPanelMsg;
+import com.fall.nettyctrl.vo.panel.WebPanelMsg;
 import com.fall.nettyctrl.vo.WsMsg;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
@@ -31,8 +31,8 @@ public class WebPanelMsgHandler implements IMsgHandler {
             ctx.channel().writeAndFlush(new TextWebSocketFrame("Server received: " + webPanelMsg));
 
             switch (operation) {
-                case "poweron": powerOnHandler.handleOperation(webPanelMsg);
-                case "poweroff": powerOffHandler.handleOperation(webPanelMsg);
+                case "poweron"  : powerOnHandler.handleOperation(webPanelMsg);
+                case "poweroff" : powerOffHandler.handleOperation(webPanelMsg);
             }
         }
     }

@@ -1,6 +1,6 @@
 package com.fall.nettyctrl.vo;
 
-import com.fall.nettyctrl.vo.param.WebPanelMsg;
+import com.fall.nettyctrl.vo.panel.WebPanelMsg;
 import com.fall.nettyctrl.vo.positioning.PositioningMsg;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

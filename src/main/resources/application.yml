@@ -3,7 +3,7 @@ netty:
     prefix: /ctrl
     port: 9527
 
-stations:
+positioning:
   media-ip: 192.168.5.33
   media-port: 50000
   commands:
@@ -34,6 +34,7 @@ stations:
 
 web-panel:
   computer:
+    # 开机
     poweron:
       list:
         - type      : "host"
@@ -66,8 +67,34 @@ web-panel:
           "2"       : "192.168.5.19:2"
           "3"       : "192.168.5.20:3"
 
+    # 关机
     poweroff:
+      list:
+        - type    : "host"
+          port    : "7788"
+          welcome : "192.168.3.219"
+          pipeline: "192.168.5.4"
+          global  : "192.168.5.5"
+          future  : "192.168.5.6"
 
+        - type: "leaderHost"
+          port: "7788"
+          "1" : "192.168.5.11"
+          "2" : "192.168.5.12"
+
+        - type: "medicine"
+          port: "7788"
+          "1" : "192.168.5.13"
+          "2" : "192.168.5.14"
+          "3" : "192.168.5.15"
+          "4" : "192.168.5.16"
+          "5" : "192.168.5.17"
+
+        - type: "global"
+          port: "7788"
+          "1" : "192.168.5.18"
+          "2" : "192.168.5.19"
+          "3" : "192.168.5.20"
 debug: true
 logging:
   level:

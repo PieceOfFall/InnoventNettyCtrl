@@ -1,4 +1,4 @@
-package com.fall.nettyctrl.vo.param;
+package com.fall.nettyctrl.vo.panel;
 
 import com.fall.nettyctrl.vo.WsMsg;
 import lombok.Data;
