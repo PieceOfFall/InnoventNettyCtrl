@@ -1,6 +1,7 @@
 package com.fall.nettyctrl.handler.msg.positioning;
 
 import com.fall.nettyctrl.handler.msg.IMsgHandler;
+import com.fall.nettyctrl.handler.msg.panel.operation.MediaHandler;
 import com.fall.nettyctrl.netty.NettySender;
 import com.fall.nettyctrl.vo.positioning.MediaCommand;
 import com.fall.nettyctrl.vo.positioning.PositioningMsg;
@@ -30,27 +31,31 @@ public class PositioningMsgHandler implements IMsgHandler {
 
     @Setter
     private List<MediaCommand> commands;
+    private final MediaHandler mediaHandler;
     private final NettySender nettySender;
     @Value("${positioning.media-ip}")
     private String mediaIp;
     @Value("${positioning.media-port}")
     private Integer mediaPort;
 
+
+
     @Autowired
-    public PositioningMsgHandler(NettySender nettySender) {
+    public PositioningMsgHandler(NettySender nettySender,MediaHandler mediaHandler) {
         this.nettySender = nettySender;
+        this.mediaHandler = mediaHandler;
     }
 
     @Override
     public void handleMsg(ChannelHandlerContext ctx, WsMsg msg) {
-        if (msg instanceof PositioningMsg positioningMsg) {
+        if (msg instanceof PositioningMsg positioningMsg && mediaHandler.getMode().equals("positioning")) {
             for (Map.Entry<Integer, String> entry : positioningMsg.getPosMap().entrySet()) {
                 var stationId = entry.getKey();
                 var mediaCommand = commands.get(stationId);
                 var commandHexStr = mediaCommand.getCommand(entry.getValue());
                 nettySender.sendMsgAsync(NettySender.hexStringToByteBuf(commandHexStr), mediaIp, mediaPort);
             }
-            log.info("Received positioning message: " + positioningMsg.getPosMap());
+            log.info("Handle positioning message: " + positioningMsg.getPosMap());
         }
     }
 }

@@ -1,5 +1,6 @@
-package com.fall.nettyctrl.handler.msg.panel;
+package com.fall.nettyctrl.handler.msg.panel.operation;
 
+import com.fall.nettyctrl.handler.msg.panel.IOperationHandler;
 import com.fall.nettyctrl.netty.TcpClient;
 import com.fall.nettyctrl.vo.panel.ComputerParam;
 import com.fall.nettyctrl.vo.panel.WebPanelMsg;
@@ -23,14 +24,14 @@ import java.util.Map;
 @Component
 @SuppressWarnings("unchecked")
 @ConfigurationProperties(prefix = "web-panel.computer.poweron")
-public class PowerOnHandler implements IOperationHandler {
+public class ComputerPowerOnHandler implements IOperationHandler {
 
     @Setter
     private List<LinkedHashMap<String, String>> list;
     private final TcpClient tcpClient;
 
     @Autowired
-    PowerOnHandler(TcpClient tcpClient) {
+    ComputerPowerOnHandler(TcpClient tcpClient) {
         this.tcpClient = tcpClient;
     }
 

@@ -40,32 +40,32 @@ web-panel:
         - type      : "host"
           targetIp  : "192.168.5.30"
           targetPort: "6000"
-          welcome   : "192.168.5.3 :welcome"
-          pipeline  : "192.168.5.4 :pipeline"
-          global    : "192.168.5.5 :global"
-          future    : "192.168.5.6 :future"
+          welcome   : "001_write_poweron"
+          pipeline  : "002_write_poweron"
+          global    : "003_write_poweron"
+          future    : "004_write_poweron"
 
         - type      : "leaderHost"
           targetIp  : "192.168.5.30"
           targetPort: "6000"
-          "1"       : "192.168.5.11:1"
-          "2"       : "192.168.5.12:2"
+          "1"       : "005_write_poweron"
+          "2"       : "006_write_poweron"
 
         - type      : "medicine"
           targetIp  : "192.168.5.31"
           targetPort: "6000"
-          "1"       : "192.168.5.13:1"
-          "2"       : "192.168.5.14:2"
-          "3"       : "192.168.5.15:3"
-          "4"       : "192.168.5.16:4"
-          "5"       : "192.168.5.17:5"
+          "1"       : "001_write_poweron"
+          "2"       : "002_write_poweron"
+          "3"       : "003_write_poweron"
+          "4"       : "004_write_poweron"
+          "5"       : "005_write_poweron"
 
         - type      : "global"
           targetIp  : "192.168.5.31"
           targetPort: "6000"
-          "1"       : "192.168.5.18:1"
-          "2"       : "192.168.5.19:2"
-          "3"       : "192.168.5.20:3"
+          "1"       : "006_write_poweron"
+          "2"       : "007_write_poweron"
+          "3"       : "008_write_poweron"
 
     # 关机
     poweroff:
@@ -95,6 +95,29 @@ web-panel:
           "1" : "192.168.5.18"
           "2" : "192.168.5.19"
           "3" : "192.168.5.20"
+
+# 音频处理器
+media:
+  mode: positioning  # normal/positioning
+  normal-command: "123"
+  media-ip: 192.168.5.33  # 同station下的ip和端口
+  media-port: 50000
+  gateway:
+    ip: 192.168.5.34
+    port: 6000
+    poweron: "123"
+    poweroff: "123"
+  mute:
+    1: "123"
+    2: "123"
+    3: "123"
+    4: "123"
+  unmute:
+    1: "123"
+    2: "123"
+    3: "123"
+    4: "123"
+
 debug: true
 logging:
   level:
