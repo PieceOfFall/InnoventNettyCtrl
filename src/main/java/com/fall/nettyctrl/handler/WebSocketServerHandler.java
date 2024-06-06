@@ -1,9 +1,9 @@
 package com.fall.nettyctrl.handler;
 
-import com.fall.nettyctrl.handler.msg.PositioningMsgHandler;
-import com.fall.nettyctrl.handler.msg.WebPanelMsgHandler;
-import com.fall.nettyctrl.vo.PositioningMsg;
-import com.fall.nettyctrl.vo.WebPanelMsg;
+import com.fall.nettyctrl.handler.msg.positioning.PositioningMsgHandler;
+import com.fall.nettyctrl.handler.msg.panel.WebPanelMsgHandler;
+import com.fall.nettyctrl.vo.positioning.PositioningMsg;
+import com.fall.nettyctrl.vo.param.WebPanelMsg;
 import com.fall.nettyctrl.vo.WsMsg;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -40,7 +40,6 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<TextWebS
             default -> throw new IllegalStateException("Unexpected msg value: " + msg);
         }
 
-        ctx.channel().writeAndFlush(new TextWebSocketFrame("Server received: " + textWebSocketFrame.text()));
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.fall.nettyctrl.vo;
+package com.fall.nettyctrl.vo.positioning;
 
 import lombok.Data;
 

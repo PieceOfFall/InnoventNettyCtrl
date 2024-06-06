@@ -1,5 +1,6 @@
-package com.fall.nettyctrl.vo;
+package com.fall.nettyctrl.vo.param;
 
+import com.fall.nettyctrl.vo.WsMsg;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -10,7 +11,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class WebPanelMsg extends WsMsg{
+public class WebPanelMsg extends WsMsg {
     private String operation;
     private String target;
     private Object operationParam;

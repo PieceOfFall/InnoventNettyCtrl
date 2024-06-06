@@ -1,8 +1,9 @@
-package com.fall.nettyctrl.handler.msg;
+package com.fall.nettyctrl.handler.msg.positioning;
 
+import com.fall.nettyctrl.handler.msg.IMsgHandler;
 import com.fall.nettyctrl.netty.NettySender;
-import com.fall.nettyctrl.vo.MediaCommand;
-import com.fall.nettyctrl.vo.PositioningMsg;
+import com.fall.nettyctrl.vo.positioning.MediaCommand;
+import com.fall.nettyctrl.vo.positioning.PositioningMsg;
 import com.fall.nettyctrl.vo.WsMsg;
 import io.netty.channel.ChannelHandlerContext;
 import lombok.Setter;
@@ -25,7 +26,7 @@ import java.util.Map;
 @Slf4j
 @Component
 @ConfigurationProperties(prefix = "stations")
-public class PositioningMsgHandler implements MsgHandler {
+public class PositioningMsgHandler implements IMsgHandler {
 
     @Setter
     private List<MediaCommand> commands;

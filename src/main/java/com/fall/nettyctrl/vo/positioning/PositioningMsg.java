@@ -1,5 +1,6 @@
-package com.fall.nettyctrl.vo;
+package com.fall.nettyctrl.vo.positioning;
 
+import com.fall.nettyctrl.vo.WsMsg;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -12,6 +13,6 @@ import java.util.Map;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class PositioningMsg extends WsMsg{
+public class PositioningMsg extends WsMsg {
     private Map<Integer,String> posMap;
 }
