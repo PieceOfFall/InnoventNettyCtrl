@@ -9,114 +9,138 @@ positioning:
   commands:
 
     - "id"    : 0
-      "high"  : 123
-      "medium": 123
-      "low"   : 123
-      "off"   : 123
+      "high"  : B321E800270101000000ECFF
+      "medium": B321DA00270101000000DFFE
+      "low"   : B321B800270101000000BEFD
+      "off"   : B32175002701010000007DFB
 
     - "id"    : 1
-      "high"  : 123
-      "medium": 123
-      "low"   : 123
-      "off"   : 123
+      "high"  : B32103002701010001000500
+      "medium": B321DB00270101000100DFFE
+      "low"   : B321930027010100010098FD
+      "off"   : B321400027010100010047FB
 
     - "id"    : 2
-      "high"  : B32142002B01010000003D04
-      "medium": B3210E002B01010000000C01
-      "low"   : B321AE002B0101000000AFFE
-      "off"   : B3211D002B010100000021FB
+      "high"  : B321F900270101000200FBFF
+      "medium": B321DC00270101000200DFFE
+      "low"   : B321940027010100020098FD
+      "off"   : B32159002701010002005FFB
 
     - "id"    : 3
-      "high"  : 123
-      "medium": 123
-      "low"   : 123
-      "off"   : 123
+      "high"  : B321EB00270101000300ECFF
+      "medium": B321CE00270101000300D0FE
+      "low"   : B3219F00270101000300A2FD
+      "off"   : B321640027010100030069FB
 
 web-panel:
+  # 电脑
   computer:
     # 开机
     poweron:
       list:
-        - type      : "host"
-          targetIp  : "192.168.5.30"
-          targetPort: "6000"
-          welcome   : "001_write_poweron"
-          pipeline  : "002_write_poweron"
-          global    : "003_write_poweron"
-          future    : "004_write_poweron"
+        - "type"        : "host"
+          "targetIp"    : "192.168.5.30"
+          "targetPort"  : "6000"
+          "welcome"     : "welcome_write_poweron"
+          "pipeline"    : "pipeline_write_poweron"
+          "global"      : "global_write_poweron"
+          "future"      : "future_write_poweron"
 
-        - type      : "leaderHost"
-          targetIp  : "192.168.5.30"
-          targetPort: "6000"
-          "1"       : "005_write_poweron"
-          "2"       : "006_write_poweron"
+        - "type"        : "leaderHost"
+          "targetIp"    : "192.168.5.30"
+          "targetPort"  : "6000"
+          "1"           : "005_write_poweron"
+          "2"           : "006_write_poweron"
 
-        - type      : "medicine"
-          targetIp  : "192.168.5.31"
-          targetPort: "6000"
-          "1"       : "001_write_poweron"
-          "2"       : "002_write_poweron"
-          "3"       : "003_write_poweron"
-          "4"       : "004_write_poweron"
-          "5"       : "005_write_poweron"
+        - "type"        : "medicine"
+          "targetIp"    : "192.168.5.31"
+          "targetPort"  : "6000"
+          "1"           : "medicine_001_write_poweron"
+          "2"           : "medicine_002_write_poweron"
+          "3"           : "medicine_003_write_poweron"
+          "4"           : "medicine_004_write_poweron"
+          "5"           : "medicine_005_write_poweron"
 
-        - type      : "global"
-          targetIp  : "192.168.5.31"
-          targetPort: "6000"
-          "1"       : "006_write_poweron"
-          "2"       : "007_write_poweron"
-          "3"       : "008_write_poweron"
+        - "type"      : "global"
+          "targetIp"  : "192.168.5.31"
+          "targetPort": "6000"
+          "1"         : "global_006_write_poweron"
+          "2"         : "global_007_write_poweron"
+          "3"         : "global_008_write_poweron"
 
     # 关机
     poweroff:
       list:
-        - type    : "host"
-          port    : "7788"
-          welcome : "192.168.3.219"
-          pipeline: "192.168.5.4"
-          global  : "192.168.5.5"
-          future  : "192.168.5.6"
+        - "type"    : "host"
+          "port"    : "7788"
+          "welcome" : "192.168.3.219"
+          "pipeline": "192.168.5.4"
+          "global"  : "192.168.5.5"
+          "future"  : "192.168.5.6"
 
-        - type: "leaderHost"
-          port: "7788"
-          "1" : "192.168.5.11"
-          "2" : "192.168.5.12"
+        - "type": "leaderHost"
+          "port": "7788"
+          "1"   : "192.168.5.11"
+          "2"   : "192.168.5.12"
 
-        - type: "medicine"
-          port: "7788"
-          "1" : "192.168.5.13"
-          "2" : "192.168.5.14"
-          "3" : "192.168.5.15"
-          "4" : "192.168.5.16"
-          "5" : "192.168.5.17"
+        - "type": "medicine"
+          "port": "7788"
+          "1"   : "192.168.5.13"
+          "2"   : "192.168.5.14"
+          "3"   : "192.168.5.15"
+          "4"   : "192.168.5.16"
+          "5"   : "192.168.5.17"
 
-        - type: "global"
-          port: "7788"
-          "1" : "192.168.5.18"
-          "2" : "192.168.5.19"
-          "3" : "192.168.5.20"
+        - "type": "global"
+          "port": "7788"
+          "1"   : "192.168.5.18"
+          "2"   : "192.168.5.19"
+          "3"   : "192.168.5.20"
 
-# 音频处理器
-media:
-  mode: positioning  # normal/positioning
-  normal-command: "123"
-  media-ip: 192.168.5.33  # 同station下的ip和端口
-  media-port: 50000
-  gateway:
-    ip: 192.168.5.34
+  # 音频处理器
+  media:
+    mode: positioning  # normal/positioning
+    normal-command:
+      - B321E800270101000000ECFF
+      - B32103002701010001000500
+      - B321F900270101000200FBFF
+      - B321EB00270101000300ECFF
+    media-ip: 192.168.5.33  # 同station下的ip和端口
+    media-port: 50000
+    mute:
+      1: "B321FF002701020000000100"
+      2: "B32100002701020001000100"
+      3: "B32101002701020002000100"
+      4: "B32102002701020003000100"
+    unmute:
+      1: "B321FE002701020000000000"
+      2: "B321FF002701020001000000"
+      3: "B32100002701020002000000"
+      4: "B32101002701020003000000"
+
+  # 灯带
+  light:
+    ip  : 192.168.5.32
     port: 6000
-    poweron: "123"
-    poweroff: "123"
-  mute:
-    1: "123"
-    2: "123"
-    3: "123"
-    4: "123"
-  unmute:
-    1: "123"
-    2: "123"
-    3: "123"
-    4: "123"
+    command: "light_{id}_write_{command}"
+
+  # RGB led灯
+  led:
+    ip  : 192.168.5.60
+    port: 6000
+    command: "led_write_{command}"
+
+  # 音箱
+  soundbox:
+    ip  : 192.168.5.60
+    port: 6000
+    command: "soundbox_write_{command}"
+
+  # 大屏
+  screen:
+    ip: 192.168.5.61
+    port: 6000
+    command: "screen_{id}_write_{command}"
 
 debug: true
 logging:

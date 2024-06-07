@@ -114,5 +114,110 @@
       "name": "stations.media-port",
       "type": "java.lang.Integer",
       "description": "Description for stations.media-port."
+    },
+    {
+      "name": "positioning.commands[0].id",
+      "type": "java.lang.String",
+      "description": "Description for positioning.commands[0].id."
+    },
+    {
+      "name": "positioning.commands",
+      "type": "java.lang.String",
+      "description": "Description for positioning.commands."
+    },
+    {
+      "name": "positioning.commands[0].high",
+      "type": "java.lang.String",
+      "description": "Description for positioning.commands[0].high."
+    },
+    {
+      "name": "positioning.commands[0].medium",
+      "type": "java.lang.String",
+      "description": "Description for positioning.commands[0].medium."
+    },
+    {
+      "name": "positioning.commands[0].low",
+      "type": "java.lang.String",
+      "description": "Description for positioning.commands[0].low."
+    },
+    {
+      "name": "positioning.commands[0].off",
+      "type": "java.lang.String",
+      "description": "Description for positioning.commands[0].off."
+    },
+    {
+      "name": "positioning.commands[1].id",
+      "type": "java.lang.String",
+      "description": "Description for positioning.commands[1].id."
+    },
+    {
+      "name": "positioning.commands[1].high",
+      "type": "java.lang.String",
+      "description": "Description for positioning.commands[1].high."
+    },
+    {
+      "name": "positioning.commands[1].medium",
+      "type": "java.lang.String",
+      "description": "Description for positioning.commands[1].medium."
+    },
+    {
+      "name": "positioning.commands[1].low",
+      "type": "java.lang.String",
+      "description": "Description for positioning.commands[1].low."
+    },
+    {
+      "name": "positioning.commands[1].off",
+      "type": "java.lang.String",
+      "description": "Description for positioning.commands[1].off."
+    },
+    {
+      "name": "positioning.commands[2].id",
+      "type": "java.lang.String",
+      "description": "Description for positioning.commands[2].id."
+    },
+    {
+      "name": "positioning.commands[2].high",
+      "type": "java.lang.String",
+      "description": "Description for positioning.commands[2].high."
+    },
+    {
+      "name": "positioning.commands[2].medium",
+      "type": "java.lang.String",
+      "description": "Description for positioning.commands[2].medium."
+    },
+    {
+      "name": "positioning.commands[2].low",
+      "type": "java.lang.String",
+      "description": "Description for positioning.commands[2].low."
+    },
+    {
+      "name": "positioning.commands[2].off",
+      "type": "java.lang.String",
+      "description": "Description for positioning.commands[2].off."
+    },
+    {
+      "name": "positioning.commands[3].id",
+      "type": "java.lang.String",
+      "description": "Description for positioning.commands[3].id."
+    },
+    {
+      "name": "positioning.commands[3].high",
+      "type": "java.lang.String",
+      "description": "Description for positioning.commands[3].high."
+    },
+    {
+      "name": "positioning.commands[3].medium",
+      "type": "java.lang.String",
+      "description": "Description for positioning.commands[3].medium."
+    },
+    {
+      "name": "positioning.commands[3].low",
+      "type": "java.lang.String",
+      "description": "Description for positioning.commands[3].low."
+    },
+    {
+      "name": "positioning.commands[3].off",
+      "type": "java.lang.String",
+      "description": "Description for positioning.commands[3].off."
     }
   ] }

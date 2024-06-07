@@ -1,10 +1,7 @@
 package com.fall.nettyctrl.handler.msg.panel;
 
 import com.fall.nettyctrl.handler.msg.IMsgHandler;
-import com.fall.nettyctrl.handler.msg.panel.operation.ComputerPowerOffHandler;
-import com.fall.nettyctrl.handler.msg.panel.operation.ComputerPowerOnHandler;
-import com.fall.nettyctrl.handler.msg.panel.operation.LightHandler;
-import com.fall.nettyctrl.handler.msg.panel.operation.MediaHandler;
+import com.fall.nettyctrl.handler.msg.panel.operation.*;
 import com.fall.nettyctrl.vo.panel.WebPanelMsg;
 import com.fall.nettyctrl.vo.WsMsg;
 import io.netty.channel.ChannelHandlerContext;
@@ -12,6 +9,8 @@ import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+
+import static java.lang.StringTemplate.STR;
 
 /**
  * 控制面板消息处理器
@@ -28,6 +27,9 @@ public class WebPanelMsgHandler implements IMsgHandler {
     private final ComputerPowerOffHandler computerPowerOffHandler;
     private final MediaHandler mediaHandler;
     private final LightHandler lightHandler;
+    private final LedHandler ledHandler;
+    private final SoundBoxHandler soundBoxHandler;
+    private final ScreenHandler screenHandler;
 
     @Override
     public void handleMsg(ChannelHandlerContext ctx, WsMsg msg) {
@@ -37,12 +39,15 @@ public class WebPanelMsgHandler implements IMsgHandler {
             String operation = webPanelMsg.getOperation();
 
             if ("ping".equals(operation)) return;
-            ctx.channel().writeAndFlush(new TextWebSocketFrame("Server received: " + webPanelMsg));
+            ctx.channel().writeAndFlush(new TextWebSocketFrame(STR."Server received: \{webPanelMsg}"));
 
             IOperationHandler operationHandler = switch (target) {
                 case "computer" -> "poweron".equals(operation) ? computerPowerOnHandler : computerPowerOffHandler;
                 case "media" -> mediaHandler;
                 case "light" -> lightHandler;
+                case "led" -> ledHandler;
+                case "soundbox" -> soundBoxHandler;
+                case "screen" -> screenHandler;
                 default -> throw new IllegalStateException("Unexpected target: " + target);
             };
             operationHandler.handleOperation(webPanelMsg);
