@@ -219,5 +219,15 @@
       "name": "positioning.commands[3].off",
       "type": "java.lang.String",
       "description": "Description for positioning.commands[3].off."
+    },
+    {
+      "name": "web-panel.computer.poweron.list",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[0].type",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[0].type."
     }
   ] }
