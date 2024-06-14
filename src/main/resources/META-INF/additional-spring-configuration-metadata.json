@@ -229,5 +229,305 @@
       "name": "web-panel.computer.poweron.list[0].type",
       "type": "java.lang.String",
       "description": "Description for web-panel.computer.poweron.list[0].type."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[0].targetIp",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[0].targetIp."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[0].targetPort",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[0].targetPort."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[0].welcome",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[0].welcome."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[0].pipeline",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[0].pipeline."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[0].global",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[0].global."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[0].future",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[0].future."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[1].type",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[1].type."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[1].targetIp",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[1].targetIp."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[1].targetPort",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[1].targetPort."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[1].1",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[1].1."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[1].2",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[1].2."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[2].type",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[2].type."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[2].targetIp",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[2].targetIp."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[2].targetPort",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[2].targetPort."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[2].1",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[2].1."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[2].2",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[2].2."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[2].3",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[2].3."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[2].4",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[2].4."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[2].5",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[2].5."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[3].type",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[3].type."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[3].targetIp",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[3].targetIp."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[3].targetPort",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[3].targetPort."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[3].1",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[3].1."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[3].2",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[3].2."
+    },
+    {
+      "name": "web-panel.computer.poweron.list[3].3",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweron.list[3].3."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[0].type",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[0].type."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[0].future",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[0].future."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[0].global",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[0].global."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[0].pipeline",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[0].pipeline."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[0].welcome",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[0].welcome."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[0].port",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[0].port."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[1].type",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[1].type."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[1].port",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[1].port."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[1].1",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[1].1."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[1].2",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[1].2."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[2].type",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[2].type."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[2].port",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[2].port."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[2].1+",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[2].1+."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[2].2",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[2].2."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[2].3",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[2].3."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[2].4",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[2].4."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[2].5",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[2].5."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[3].type",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[3].type."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[3].port",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[3].port."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[3].1",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[3].1."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[3].2",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[3].2."
+    },
+    {
+      "name": "web-panel.computer.poweroff.list[3].3",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.computer.poweroff.list[3].3."
+    },
+    {
+      "name": "web-panel.media.mode",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.media.mode."
+    },
+    {
+      "name": "web-panel.media.normal-command",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.media.normal-command."
+    },
+    {
+      "name": "web-panel.media.media-ip",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.media.media-ip."
+    },
+    {
+      "name": "web-panel.media.media-port",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.media.media-port."
+    },
+    {
+      "name": "web-panel.media.mute.1",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.media.mute.1."
+    },
+    {
+      "name": "web-panel.media.mute.2",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.media.mute.2."
+    },
+    {
+      "name": "web-panel.media.mute.3",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.media.mute.3."
+    },
+    {
+      "name": "web-panel.media.mute.4",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.media.mute.4."
+    },
+    {
+      "name": "web-panel.media.unmute.1",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.media.unmute.1."
+    },
+    {
+      "name": "web-panel.media.unmute.2",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.media.unmute.2."
+    },
+    {
+      "name": "web-panel.media.unmute.3",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.media.unmute.3."
+    },
+    {
+      "name": "web-panel.media.unmute.4",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.media.unmute.4."
     }
   ] }
