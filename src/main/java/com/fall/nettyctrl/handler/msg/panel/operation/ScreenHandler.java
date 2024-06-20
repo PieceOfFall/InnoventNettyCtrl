@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author FAll
- * @date 2024年06月07日 16:03
+ * @date 2024年06月20日 15:42
  */
 @Component
 @RequiredArgsConstructor
@@ -26,11 +26,9 @@ public class ScreenHandler implements IOperationHandler {
 
     @Override
     public void handleOperation(WebPanelMsg webPanelMsg) {
-        Integer screenId = (Integer)webPanelMsg.getOperationParam();
         String operation = webPanelMsg.getOperation();
-        String completeCommand = command
-                .replace("{id}", screenId.toString())
-                .replace("{command}", operation);
+
+        String completeCommand = command.replace("{command}", operation);
         tcpClient.sendMsg(ip,port,completeCommand);
     }
 }

@@ -29,7 +29,11 @@ public class WebPanelMsgHandler implements IMsgHandler {
     private final LightHandler lightHandler;
     private final LedHandler ledHandler;
     private final SoundBoxHandler soundBoxHandler;
+    private final BigScreenHandler bigScreenHandler;
+    private final LeaderScreenHandler leaderScreenHandler;
+    private final PipelineScreenHandler pipelineScreenHandler;
     private final ScreenHandler screenHandler;
+    private final RelayHandler relayHandler;
 
     @Override
     public void handleMsg(ChannelHandlerContext ctx, WsMsg msg) {
@@ -44,9 +48,13 @@ public class WebPanelMsgHandler implements IMsgHandler {
             IOperationHandler operationHandler = switch (target) {
                 case "computer" -> "poweron".equals(operation) ? computerPowerOnHandler : computerPowerOffHandler;
                 case "media" -> mediaHandler;
+                case "relay" -> relayHandler;
                 case "light" -> lightHandler;
+                case "leader-screen" -> leaderScreenHandler;
+                case "pipeline-screen" -> pipelineScreenHandler;
                 case "led" -> ledHandler;
                 case "soundbox" -> soundBoxHandler;
+                case "big-screen" -> bigScreenHandler;
                 case "screen" -> screenHandler;
                 default -> throw new IllegalStateException("Unexpected target: " + target);
             };

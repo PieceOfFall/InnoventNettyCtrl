@@ -9,30 +9,28 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author FAll
- * @date 2024年06月06日 13:12
+ * @date 2024年06月07日 16:03
  */
 @Component
 @RequiredArgsConstructor
-public class LightHandler implements IOperationHandler {
+public class BigScreenHandler implements IOperationHandler {
 
-    @Value("${web-panel.light.ip}")
+    @Value("${web-panel.big-screen.ip}")
     private String ip;
-    @Value("${web-panel.light.port}")
+    @Value("${web-panel.big-screen.port}")
     private Integer port;
-    @Value("${web-panel.light.command}")
+    @Value("${web-panel.big-screen.command}")
     private String command;
 
     private final TcpClient tcpClient;
 
     @Override
     public void handleOperation(WebPanelMsg webPanelMsg) {
-        Object lightId = webPanelMsg.getOperationParam();
-        String replaceId = lightId instanceof String ? (String) lightId : lightId.toString();
-
+        Integer screenId = (Integer)webPanelMsg.getOperationParam();
         String operation = webPanelMsg.getOperation();
         String completeCommand = command
-                .replace("{id}", replaceId)
+                .replace("{id}", screenId.toString())
                 .replace("{command}", operation);
-        tcpClient.sendMsg(ip, port, completeCommand);
+        tcpClient.sendMsg(ip,port,completeCommand);
     }
 }

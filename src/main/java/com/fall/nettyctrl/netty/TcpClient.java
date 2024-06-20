@@ -25,6 +25,7 @@ import java.net.InetSocketAddress;
 public class TcpClient {
     @Async
     public void sendMsg(String ip, int port, String message) {
+        log.info(message);
         NioEventLoopGroup group = new NioEventLoopGroup();
         try {
             Bootstrap bootstrap = new Bootstrap();
@@ -40,7 +41,7 @@ public class TcpClient {
             Channel channel = future.channel();
             ByteBuf buffer = Unpooled.copiedBuffer(message, CharsetUtil.UTF_8);
             channel.writeAndFlush(buffer).sync();
-            channel.closeFuture().sync();
+            channel.closeFuture();
         } catch (InterruptedException e) {
             log.error("Error while sending TCP message: ", e);
             Thread.currentThread().interrupt();

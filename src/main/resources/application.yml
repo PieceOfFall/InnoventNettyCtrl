@@ -1,12 +1,12 @@
 netty:
   websocket-server:
     prefix: /ctrl
-    port: 9527
+    port  : 9527
 
 positioning:
-  media-ip: 192.168.5.33
+  media-ip  : 192.168.5.33
   media-port: 50000
-  commands:
+  commands  :
 
     - "id"    : 0
       "high"  : B321E800270101000000ECFF
@@ -85,7 +85,7 @@ web-panel:
 
         - "type": "medicine"
           "port": "7788"
-          "1+"   : "192.168.5.13"
+          "1"   : "192.168.5.13"
           "2"   : "192.168.5.14"
           "3"   : "192.168.5.15"
           "4"   : "192.168.5.16"
@@ -118,29 +118,60 @@ web-panel:
       3: "B32100002701020002000000"
       4: "B32101002701020003000000"
 
+  # 继电器
+  relay:
+    ip      : 192.168.5.32
+    port    : 6000
+    command : "delay_all_write_{command}"
+
   # 灯带
   light:
-    ip  : 192.168.5.32
-    port: 6000
-    command: "light_{id}_write_{command}"
+    ip      : 192.168.5.32
+    port    : 6000
+    command : "light_{id}_write_{command}"
+
+  # 领导来访的屏幕电源
+  leader-screen:
+    ip      : 192.168.5.32
+    port    : 6000
+    command : "leader-screen_{id}_write_{command}"
+
+  # 领导来访的屏幕电源
+  pipeline-screen:
+    ip      : 192.168.5.32
+    port    : 6000
+    command : "pipline-screen_{id}_write_{command}"
+
+  # 继电器下所有屏幕电源
+  screen:
+    ip      : 192.168.5.32
+    port    : 6000
+    command : "screen_all_write_{command}"
 
   # RGB led灯
   led:
-    ip  : 192.168.5.60
-    port: 6000
-    command: "led_write_{command}"
+    ip      : 192.168.5.60
+    port    : 6000
+    command : "led_{command}_change_{id}"
+
+  # 大屏供电 TODO: 改为多个ip，命令改为16进制
+  big-screen:
+    ip      : 192.168.5.61
+    port    : 6000
+    command : "big_screen_{id}_write_{command}"
+
+  # 时序电源所有设备电源
+  sequential:
+    ip      : 192.168.5.60
+    port    : 6000
+    poweron : 880BFF
+    poweroff: 880DFF
 
   # 音箱
   soundbox:
-    ip  : 192.168.5.60
-    port: 6000
-    command: "soundbox_write_{command}"
-
-  # 大屏
-  screen:
-    ip: 192.168.5.61
-    port: 6000
-    command: "screen_{id}_write_{command}"
+    ip      : 192.168.5.60
+    port    : 6000
+    command : "soundbox_write_{command}"
 
 debug: true
 logging:

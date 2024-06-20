@@ -9,25 +9,24 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author FAll
- * @date 2024年06月06日 13:12
+ * @date 2024年06月20日 15:29
  */
 @Component
 @RequiredArgsConstructor
-public class LightHandler implements IOperationHandler {
+public class PipelineScreenHandler implements IOperationHandler {
 
-    @Value("${web-panel.light.ip}")
+    @Value("${web-panel.pipeline-screen.ip}")
     private String ip;
-    @Value("${web-panel.light.port}")
+    @Value("${web-panel.pipeline-screen.port}")
     private Integer port;
-    @Value("${web-panel.light.command}")
+    @Value("${web-panel.pipeline-screen.command}")
     private String command;
 
     private final TcpClient tcpClient;
-
     @Override
     public void handleOperation(WebPanelMsg webPanelMsg) {
-        Object lightId = webPanelMsg.getOperationParam();
-        String replaceId = lightId instanceof String ? (String) lightId : lightId.toString();
+        Object screenId = webPanelMsg.getOperationParam();
+        String replaceId = screenId instanceof String ? (String) screenId : screenId.toString();
 
         String operation = webPanelMsg.getOperation();
         String completeCommand = command

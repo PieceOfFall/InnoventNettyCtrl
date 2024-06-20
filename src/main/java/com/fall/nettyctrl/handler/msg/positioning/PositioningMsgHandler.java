@@ -48,7 +48,7 @@ public class PositioningMsgHandler implements IMsgHandler {
 
     @Override
     public void handleMsg(ChannelHandlerContext ctx, WsMsg msg) {
-        if (msg instanceof PositioningMsg positioningMsg && mediaHandler.getMode().equals("positioning")) {
+        if (msg instanceof PositioningMsg positioningMsg && "positioning".equals(mediaHandler.getMode())) {
             for (Map.Entry<Integer, String> entry : positioningMsg.getPosMap().entrySet()) {
                 var stationId = entry.getKey();
                 var mediaCommand = commands.get(stationId);
