@@ -2,6 +2,8 @@ netty:
   websocket-server:
     prefix: /ctrl
     port  : 9527
+  tcp-client:
+    timeout: 3000
 
 positioning:
   media-ip  : 192.168.5.33
@@ -163,7 +165,7 @@ web-panel:
   led:
     ip      : 192.168.5.60
     port    : 6000
-    command : "led_{command}_change_{id}"
+    command : "light_1_write_{id}"
 
   # 大屏供电
   big-screen:
@@ -171,8 +173,8 @@ web-panel:
     list:
       - id      : global
         ip      : 192.168.5.61
-        poweron :
-        poweroff:
+        poweron : 00000000000601050808FF00
+        poweroff: 00000000000601050809FF00
 
       - id      : welcome
         ip      : 192.168.5.62
@@ -181,8 +183,8 @@ web-panel:
 
       - id      : future
         ip      : 192.168.5.63
-        poweron :
-        poweroff:
+        poweron : 0000000000060105080AFF00
+        poweroff: 0000000000060105080BFF00
 
   # 时序电源所有设备电源
   sequential:

@@ -644,5 +644,25 @@
       "name": "web-panel.computer.poweron.list[5].all",
       "type": "java.lang.String",
       "description": "Description for web-panel.computer.poweron.list[5].all."
+    },
+    {
+      "name": "web-panel.big-screen.list[2].poweron",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.big-screen.list[2].poweron."
+    },
+    {
+      "name": "web-panel.big-screen.list[2].poweroff",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.big-screen.list[2].poweroff."
+    },
+    {
+      "name": "web-panel.big-screen.list[0].poweron",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.big-screen.list[0].poweron."
+    },
+    {
+      "name": "web-panel.big-screen.list[0].poweroff",
+      "type": "java.lang.String",
+      "description": "Description for web-panel.big-screen.list[0].poweroff."
     }
   ] }

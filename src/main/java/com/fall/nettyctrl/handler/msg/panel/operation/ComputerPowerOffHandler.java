@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 /**
  * 关机消息处理器
@@ -37,25 +38,22 @@ public class ComputerPowerOffHandler implements IOperationHandler {
     public void handleOperation(WebPanelMsg webPanelMsg) {
         var operationParam = (Map<String, String>) webPanelMsg.getOperationParam();
         var computerParam = new ComputerParam(operationParam.get("type"), operationParam.get("name"));
-
         var type = computerParam.getType();
+
         if("hosts".equals(type)) {
             // 过滤得到所有host相关的map的list
-            var hostList = list
-                    .stream()
-                    .filter(map-> map.get("type").equals("host")
-                            || map.get("type").equals("leaderHost"))
-                    .toList();
+            Predicate<LinkedHashMap<String, String>> hostPredicate =
+                    map-> map.get("type").equals("host")
+                    || map.get("type").equals("leaderHost");
+            var hostList = filterMapList(hostPredicate);
 
             loopToShutdown(hostList);
-
         } else if("integrated".equals(type)) {
             // 过滤得到所有integrated相关的map的list
-            var integratedList = list
-                    .stream()
-                    .filter(map-> map.get("type").equals("medicine")
-                            || map.get("type").equals("global"))
-                    .toList();
+            Predicate<LinkedHashMap<String, String>> integratedPredicate =
+                    map-> map.get("type").equals("medicine")
+                    || map.get("type").equals("global");
+            var integratedList = filterMapList(integratedPredicate);
 
             loopToShutdown(integratedList);
         }
@@ -69,9 +67,14 @@ public class ComputerPowerOffHandler implements IOperationHandler {
                         "shutdown");
             }
         }
-
     }
 
+    private List<LinkedHashMap<String, String>> filterMapList(Predicate<LinkedHashMap<String, String>> predicate) {
+        return list
+                .stream()
+                .filter(predicate)
+                .toList();
+    }
 
     private void loopToShutdown(List<LinkedHashMap<String, String>> machineList) {
         for (LinkedHashMap<String, String> machines : machineList) {

@@ -1,16 +1,20 @@
 package com.fall.nettyctrl.netty;
 
+import com.fall.nettyctrl.handler.WebSocketServerHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.util.CharsetUtil;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +26,12 @@ import java.net.InetSocketAddress;
  */
 @Slf4j
 @Component
+@RequiredArgsConstructor
 public class TcpClient {
+
+    @Value("${netty.tcp-client.timeout}")
+    private Integer timeout;
+
     @Async
     public void sendMsg(String ip, int port, String message) {
         log.info(message);
@@ -37,12 +46,15 @@ public class TcpClient {
                             ch.pipeline().addLast(new StringEncoder());
                         }
                     });
+            bootstrap.option(ChannelOption.CONNECT_TIMEOUT_MILLIS, timeout);
             ChannelFuture future = bootstrap.connect(new InetSocketAddress(ip, port)).sync();
             Channel channel = future.channel();
             ByteBuf buffer = Unpooled.copiedBuffer(message, CharsetUtil.UTF_8);
             channel.writeAndFlush(buffer).sync();
             channel.closeFuture();
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
+            WebSocketServerHandler.broadcastMessage(STR."\{ip}:\{port} \n[\{message}]指令发送异常");
+
             log.error("Error while sending TCP message: ", e);
             Thread.currentThread().interrupt();
         } finally {
@@ -64,12 +76,13 @@ public class TcpClient {
                             ch.pipeline().addLast(new StringEncoder());
                         }
                     });
+            bootstrap.option(ChannelOption.CONNECT_TIMEOUT_MILLIS, timeout);
             ChannelFuture future = bootstrap.connect(new InetSocketAddress(ip, port)).sync();
             Channel channel = future.channel();
 
             channel.writeAndFlush(message).sync();
             channel.closeFuture();
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             log.error("Error while sending TCP message: ", e);
             Thread.currentThread().interrupt();
         } finally {
