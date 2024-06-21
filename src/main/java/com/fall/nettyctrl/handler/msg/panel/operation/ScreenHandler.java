@@ -29,6 +29,6 @@ public class ScreenHandler implements IOperationHandler {
         String operation = webPanelMsg.getOperation();
 
         String completeCommand = command.replace("{command}", operation);
-        tcpClient.sendMsg(ip,port,completeCommand);
+        tcpClient.sendMsg(ip, port, completeCommand);
     }
 }

@@ -49,4 +49,46 @@ public class TcpClient {
             group.shutdownGracefully();
         }
     }
+
+    @Async
+    public void sendMsg(String ip, int port, ByteBuf message) {
+
+        NioEventLoopGroup group = new NioEventLoopGroup();
+        try {
+            Bootstrap bootstrap = new Bootstrap();
+            bootstrap.group(group)
+                    .channel(NioSocketChannel.class)
+                    .handler(new ChannelInitializer<NioSocketChannel>() {
+                        @Override
+                        protected void initChannel(NioSocketChannel ch) {
+                            ch.pipeline().addLast(new StringEncoder());
+                        }
+                    });
+            ChannelFuture future = bootstrap.connect(new InetSocketAddress(ip, port)).sync();
+            Channel channel = future.channel();
+
+            channel.writeAndFlush(message).sync();
+            channel.closeFuture();
+        } catch (InterruptedException e) {
+            log.error("Error while sending TCP message: ", e);
+            Thread.currentThread().interrupt();
+        } finally {
+            group.shutdownGracefully();
+        }
+    }
+
+    public static byte[] hexStringToByteArray(String s) {
+        int len = s.length();
+        byte[] data = new byte[len / 2];
+        for (int i = 0; i < len; i += 2) {
+            data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
+                    + Character.digit(s.charAt(i + 1), 16));
+        }
+        return data;
+    }
+
+    public static ByteBuf hexStringToByteBuf(String hexString) {
+        byte[] byteArray = hexStringToByteArray(hexString);
+        return Unpooled.wrappedBuffer(byteArray);
+    }
 }

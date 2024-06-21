@@ -39,7 +39,7 @@ web-panel:
     poweron:
       list:
         - "type"        : "host"
-          "targetIp"    : "192.168.5.30"
+          "targetIp"    : "192.168.5.31"
           "targetPort"  : "6000"
           "welcome"     : "welcome_write_poweron"
           "pipeline"    : "pipeline_write_poweron"
@@ -47,13 +47,18 @@ web-panel:
           "future"      : "future_write_poweron"
 
         - "type"        : "leaderHost"
-          "targetIp"    : "192.168.5.30"
+          "targetIp"    : "192.168.5.31"
           "targetPort"  : "6000"
           "1"           : "005_write_poweron"
           "2"           : "006_write_poweron"
 
-        - "type"        : "medicine"
+        - "type"        : "hosts"
           "targetIp"    : "192.168.5.31"
+          "targetPort"  : "6000"
+          "all"         : "hosts_all_write_poweron"
+
+        - "type"        : "medicine"
+          "targetIp"    : "192.168.5.30"
           "targetPort"  : "6000"
           "1"           : "medicine_001_write_poweron"
           "2"           : "medicine_002_write_poweron"
@@ -61,12 +66,18 @@ web-panel:
           "4"           : "medicine_004_write_poweron"
           "5"           : "medicine_005_write_poweron"
 
-        - "type"      : "global"
-          "targetIp"  : "192.168.5.31"
-          "targetPort": "6000"
-          "1"         : "global_006_write_poweron"
-          "2"         : "global_007_write_poweron"
-          "3"         : "global_008_write_poweron"
+        - "type"        : "global"
+          "targetIp"    : "192.168.5.30"
+          "targetPort"  : "6000"
+          "1"           : "global_006_write_poweron"
+          "2"           : "global_007_write_poweron"
+          "3"           : "global_008_write_poweron"
+
+        - "type"        : "integrated"
+          "targetIp"    : "192.168.5.30"
+          "targetPort"  : "6000"
+          "all"         : "integrated_all_write_poweron"
+
 
     # 关机
     poweroff:
@@ -154,11 +165,24 @@ web-panel:
     port    : 6000
     command : "led_{command}_change_{id}"
 
-  # 大屏供电 TODO: 改为多个ip，命令改为16进制
+  # 大屏供电
   big-screen:
-    ip      : 192.168.5.61
-    port    : 6000
-    command : "big_screen_{id}_write_{command}"
+    port: 12345
+    list:
+      - id      : global
+        ip      : 192.168.5.61
+        poweron :
+        poweroff:
+
+      - id      : welcome
+        ip      : 192.168.5.62
+        poweron : 0106002C000189C3
+        poweroff: 0106002C00004803
+
+      - id      : future
+        ip      : 192.168.5.63
+        poweron :
+        poweroff:
 
   # 时序电源所有设备电源
   sequential:

@@ -34,6 +34,7 @@ public class WebPanelMsgHandler implements IMsgHandler {
     private final PipelineScreenHandler pipelineScreenHandler;
     private final ScreenHandler screenHandler;
     private final RelayHandler relayHandler;
+    private final SequentialHandler sequentialHandler;
 
     @Override
     public void handleMsg(ChannelHandlerContext ctx, WsMsg msg) {
@@ -56,6 +57,7 @@ public class WebPanelMsgHandler implements IMsgHandler {
                 case "soundbox" -> soundBoxHandler;
                 case "big-screen" -> bigScreenHandler;
                 case "screen" -> screenHandler;
+                case "sequential" -> sequentialHandler;
                 default -> throw new IllegalStateException("Unexpected target: " + target);
             };
             operationHandler.handleOperation(webPanelMsg);

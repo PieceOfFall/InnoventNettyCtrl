@@ -40,6 +40,7 @@ public class ComputerPowerOnHandler implements IOperationHandler {
         var operationParam = (Map<String, String>) webPanelMsg.getOperationParam();
         var computerParam = new ComputerParam(operationParam.get("type"), operationParam.get("name"));
 
+        
         for (LinkedHashMap<String, String> typeMap : list) {
             if (typeMap.get("type").equals(computerParam.getType())) {
                 tcpClient.sendMsg(
