@@ -47,6 +47,7 @@ public class ComputerPowerOnHandler implements IOperationHandler {
                         typeMap.get("targetIp"),
                         Integer.parseInt(typeMap.get("targetPort")),
                         typeMap.get(computerParam.getName()));
+                break;
             }
         }
 

@@ -2,6 +2,7 @@ package com.fall.nettyctrl.handler.msg.panel;
 
 import com.fall.nettyctrl.handler.msg.IMsgHandler;
 import com.fall.nettyctrl.handler.msg.panel.operation.*;
+import com.fall.nettyctrl.util.ResponseUtil;
 import com.fall.nettyctrl.vo.panel.WebPanelMsg;
 import com.fall.nettyctrl.vo.WsMsg;
 import io.netty.channel.ChannelHandlerContext;
@@ -36,6 +37,9 @@ public class WebPanelMsgHandler implements IMsgHandler {
     private final RelayHandler relayHandler;
     private final SequentialHandler sequentialHandler;
 
+
+    private final ResponseUtil responseUtil;
+
     @Override
     public void handleMsg(ChannelHandlerContext ctx, WsMsg msg) {
         if (msg instanceof WebPanelMsg webPanelMsg) {
@@ -44,7 +48,7 @@ public class WebPanelMsgHandler implements IMsgHandler {
             String operation = webPanelMsg.getOperation();
 
             if ("ping".equals(operation)) return;
-            ctx.channel().writeAndFlush(new TextWebSocketFrame(STR."Server received: \{webPanelMsg}"));
+            ctx.channel().writeAndFlush(new TextWebSocketFrame(responseUtil.notAlert(STR."后端接收成功: \{webPanelMsg}")));
 
             IOperationHandler operationHandler = switch (target) {
                 case "computer" -> "poweron".equals(operation) ? computerPowerOnHandler : computerPowerOffHandler;

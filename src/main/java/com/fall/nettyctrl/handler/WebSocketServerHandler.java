@@ -30,7 +30,6 @@ import org.springframework.stereotype.Component;
 @ChannelHandler.Sharable
 public class WebSocketServerHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
 
-
     private final ObjectMapper objectMapper;
     private final PositioningMsgHandler positioningMsgHandler;
     private final WebPanelMsgHandler webPanelMsgHandler;
@@ -69,6 +68,7 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<TextWebS
 
     public static void broadcastMessage(String message) {
         TextWebSocketFrame frame = new TextWebSocketFrame(message);
+        var _ = channels;
         channels.writeAndFlush(frame);
     }
 }

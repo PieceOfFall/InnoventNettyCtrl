@@ -45,26 +45,27 @@ public class MediaHandler implements IOperationHandler {
     public void handleOperation(WebPanelMsg webPanelMsg) {
         String msgToSend = null;
         switch (webPanelMsg.getOperation()) {
-            case "normal":{
-                    for (String command : normalCommand) {
-                        udpSender.sendMsgAsync(
-                                NettySender.hexStringToByteBuf(command),
-                                mediaIp,
-                                mediaPort);
-                    }
-                    this.mode = "normal";
-                    break;
-                }
-                case "positioning": this.mode = "positioning";break;
-                case "mute": msgToSend = mute.get((Integer) webPanelMsg.getOperationParam());break;
-                case "unmute": msgToSend = unmute.get((Integer) webPanelMsg.getOperationParam());break;
+            case "normal": switchNormalMode(); break;
+            case "positioning": this.mode = "positioning"; break;
+            case "mute": msgToSend = mute.get((Integer) webPanelMsg.getOperationParam()); break;
+            case "unmute": msgToSend = unmute.get((Integer) webPanelMsg.getOperationParam()); break;
             }
+
             if(msgToSend == null) return;
-        udpSender.sendMsgAsync(
-                NettySender.hexStringToByteBuf(msgToSend),
-                mediaIp,
-                mediaPort);
+            udpSender.sendMsgAsync(NettySender.hexStringToByteBuf(msgToSend), mediaIp, mediaPort);
         }
+
+        private void switchNormalMode() {
+            for (String command : normalCommand) {
+                udpSender.sendMsgAsync(
+                        NettySender.hexStringToByteBuf(command),
+                        mediaIp,
+                        mediaPort);
+            }
+            this.mode = "normal";
+        }
+
+
 
     }
 

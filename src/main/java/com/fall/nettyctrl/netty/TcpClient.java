@@ -1,6 +1,8 @@
 package com.fall.nettyctrl.netty;
 
 import com.fall.nettyctrl.handler.WebSocketServerHandler;
+import com.fall.nettyctrl.util.ResponseUtil;
+import com.fall.nettyctrl.vo.panel.WebPanelResponse;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -32,6 +34,8 @@ public class TcpClient {
     @Value("${netty.tcp-client.timeout}")
     private Integer timeout;
 
+    private final ResponseUtil responseUtil;
+
     @Async
     public void sendMsg(String ip, int port, String message) {
         log.info(message);
@@ -53,7 +57,7 @@ public class TcpClient {
             channel.writeAndFlush(buffer).sync();
             channel.closeFuture();
         } catch (Exception e) {
-            WebSocketServerHandler.broadcastMessage(STR."\{ip}:\{port} \n[\{message}]指令发送异常");
+            WebSocketServerHandler.broadcastMessage(responseUtil.error(STR."\{ip}:\{port} \n[\{message}]后端发送指令异常"));
 
             log.error("Error while sending TCP message: ", e);
             Thread.currentThread().interrupt();
