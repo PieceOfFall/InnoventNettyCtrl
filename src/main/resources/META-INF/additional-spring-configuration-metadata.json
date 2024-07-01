@@ -664,5 +664,155 @@
       "name": "web-panel.big-screen.list[0].poweroff",
       "type": "java.lang.String",
       "description": "Description for web-panel.big-screen.list[0].poweroff."
+    },
+    {
+      "name": "ip-name.map.192.168.5.5",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.5."
+    },
+    {
+      "name": "ip-name.map.192.168.5.6",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.6."
+    },
+    {
+      "name": "ip-name.map.192.168.5.3",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.3."
+    },
+    {
+      "name": "ip-name.map.192.168.5.4",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.4."
+    },
+    {
+      "name": "ip-name.map.192.168.5.11",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.11."
+    },
+    {
+      "name": "ip-name.map.192.168.5.12",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.12."
+    },
+    {
+      "name": "ip-name.map.192.168.5.31",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.31."
+    },
+    {
+      "name": "ip-name.map.192.168.5.13",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.13."
+    },
+    {
+      "name": "ip-name.map.192.168.5.14",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.14."
+    },
+    {
+      "name": "ip-name.map.192.168.5.15",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.15."
+    },
+    {
+      "name": "ip-name.map.192.168.5.16",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.16."
+    },
+    {
+      "name": "ip-name.map.192.168.5.17",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.17."
+    },
+    {
+      "name": "ip-name.map.192.168.5.18",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.18."
+    },
+    {
+      "name": "ip-name.map.192.168.5.19",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.19."
+    },
+    {
+      "name": "ip-name.map.192.168.5.20",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.20."
+    },
+    {
+      "name": "ip-name.map.192.168.5.30",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.30."
+    },
+    {
+      "name": "ip-name.map.192.168.5.60",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.60."
+    },
+    {
+      "name": "ip-name.map.192.168.5.33",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.33."
+    },
+    {
+      "name": "ip-name.map.192.168.5.32",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.32."
+    },
+    {
+      "name": "ip-name.map.192.168.5.51",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.51."
+    },
+    {
+      "name": "ip-name.map.192.168.5.52",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.52."
+    },
+    {
+      "name": "ip-name.map.192.168.5.53",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.53."
+    },
+    {
+      "name": "ip-name.map.192.168.5.54",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.54."
+    },
+    {
+      "name": "ip-name.map.192.168.5.61",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.61."
+    },
+    {
+      "name": "ip-name.map.192.168.5.62",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.62."
+    },
+    {
+      "name": "ip-name.map.192.168.5.63",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.63."
+    },
+    {
+      "name": "ip-name.map.192.168.5.70",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.70."
+    },
+    {
+      "name": "ip-name.map.192.168.5.71",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.71."
+    },
+    {
+      "name": "ip-name.map.192.168.5.72",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.72."
+    },
+    {
+      "name": "ip-name.map.192.168.5.73",
+      "type": "java.lang.String",
+      "description": "Description for ip-name.map.192.168.5.73."
     }
   ] }
