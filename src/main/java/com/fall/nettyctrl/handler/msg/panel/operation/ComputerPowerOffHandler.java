@@ -42,14 +42,12 @@ public class ComputerPowerOffHandler implements IOperationHandler {
 
         if("hosts".equals(type)) {
             // 过滤得到所有host相关的map的list
-            var predicate = getPredicate("host", "leaderHost");
-            var hostList = filterMapList(predicate);
+            var hostList = getFilteredMapListExclude("host", "leaderHost");
 
             loopToShutdown(hostList);
         } else if("integrated".equals(type)) {
             // 过滤得到所有integrated相关的map的list
-            var predicate = getPredicate("global", "medicine");
-            var integratedList = filterMapList(predicate);
+            var integratedList = getFilteredMapListExclude("global", "medicine");
 
             loopToShutdown(integratedList);
         }
@@ -65,18 +63,15 @@ public class ComputerPowerOffHandler implements IOperationHandler {
         }
     }
 
-    private Predicate<LinkedHashMap<String, String>> getPredicate(String typeName1,String typeName2) {
-        return
-                map-> map.get("type").equals(typeName1)
-                        || map.get("type").equals(typeName2);
-    }
-
-    private List<LinkedHashMap<String, String>> filterMapList(Predicate<LinkedHashMap<String, String>> predicate) {
+    private List<LinkedHashMap<String, String>>  getFilteredMapListExclude(String typeName1,String typeName2) {
+        Predicate<LinkedHashMap<String, String>> predicate = map-> map.get("type").equals(typeName1)
+                || map.get("type").equals(typeName2);
         return list
                 .stream()
                 .filter(predicate)
                 .toList();
     }
+
 
     private void loopToShutdown(List<LinkedHashMap<String, String>> machineList) {
         for (LinkedHashMap<String, String> machines : machineList) {

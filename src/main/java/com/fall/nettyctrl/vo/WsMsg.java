@@ -12,9 +12,7 @@ import lombok.Data;
  * @date 2024年06月03日 13:45
  */
 @Data
-@JsonTypeInfo(
-        use = JsonTypeInfo.Id.NAME,
-        property = "_type")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "_type")
 @JsonSubTypes({
         @JsonSubTypes.Type(value = PositioningMsg.class, name = "positioning"),
         @JsonSubTypes.Type(value = WebPanelMsg.class, name = "web-panel")

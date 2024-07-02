@@ -2,9 +2,9 @@ package com.fall.nettyctrl.netty;
 
 import com.fall.nettyctrl.handler.WebSocketServerHandler;
 import com.fall.nettyctrl.util.ResponseUtil;
-import com.fall.nettyctrl.vo.panel.WebPanelResponse;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufUtil;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -14,7 +14,6 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.util.CharsetUtil;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,6 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import java.net.InetSocketAddress;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 /**
@@ -54,16 +52,7 @@ public class TcpClient {
         log.info(message);
         NioEventLoopGroup group = new NioEventLoopGroup();
         try {
-            Bootstrap bootstrap = new Bootstrap();
-            bootstrap.group(group)
-                    .channel(NioSocketChannel.class)
-                    .handler(new ChannelInitializer<NioSocketChannel>() {
-                        @Override
-                        protected void initChannel(NioSocketChannel ch) {
-                            ch.pipeline().addLast(new StringEncoder());
-                        }
-                    });
-            bootstrap.option(ChannelOption.CONNECT_TIMEOUT_MILLIS, timeout);
+            Bootstrap bootstrap = initTcpClientBootStrap(group);
             ChannelFuture future = bootstrap.connect(new InetSocketAddress(ip, port)).sync();
             Channel channel = future.channel();
             ByteBuf buffer = Unpooled.copiedBuffer(message, CharsetUtil.UTF_8);
@@ -80,19 +69,10 @@ public class TcpClient {
 
     @Async
     public void sendMsg(String ip, int port, ByteBuf message) {
-
+        log.info(ByteBufUtil.hexDump(message));
         NioEventLoopGroup group = new NioEventLoopGroup();
         try {
-            Bootstrap bootstrap = new Bootstrap();
-            bootstrap.group(group)
-                    .channel(NioSocketChannel.class)
-                    .handler(new ChannelInitializer<NioSocketChannel>() {
-                        @Override
-                        protected void initChannel(NioSocketChannel ch) {
-                            ch.pipeline().addLast(new StringEncoder());
-                        }
-                    });
-            bootstrap.option(ChannelOption.CONNECT_TIMEOUT_MILLIS, timeout);
+            Bootstrap bootstrap = initTcpClientBootStrap(group);
             ChannelFuture future = bootstrap.connect(new InetSocketAddress(ip, port)).sync();
             Channel channel = future.channel();
 
@@ -106,18 +86,23 @@ public class TcpClient {
         }
     }
 
-    public static byte[] hexStringToByteArray(String s) {
-        int len = s.length();
-        byte[] data = new byte[len / 2];
-        for (int i = 0; i < len; i += 2) {
-            data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
-                    + Character.digit(s.charAt(i + 1), 16));
-        }
-        return data;
+    private Bootstrap initTcpClientBootStrap(NioEventLoopGroup group) {
+        Bootstrap bootstrap = new Bootstrap();
+        bootstrap.group(group)
+                .channel(NioSocketChannel.class)
+                .handler(new ChannelInitializer<NioSocketChannel>() {
+                    @Override
+                    protected void initChannel(NioSocketChannel ch) {
+                        ch.pipeline().addLast(new StringEncoder());
+                    }
+                });
+        bootstrap.option(ChannelOption.CONNECT_TIMEOUT_MILLIS, timeout);
+        return  bootstrap;
     }
 
+
     public static ByteBuf hexStringToByteBuf(String hexString) {
-        byte[] byteArray = hexStringToByteArray(hexString);
+        byte[] byteArray = NettySender.hexStringToByteArray(hexString);
         return Unpooled.wrappedBuffer(byteArray);
     }
 }

@@ -4,17 +4,13 @@ import com.fall.nettyctrl.handler.msg.panel.IOperationHandler;
 import com.fall.nettyctrl.netty.TcpClient;
 import com.fall.nettyctrl.vo.panel.WebPanelMsg;
 import io.netty.buffer.ByteBuf;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author FAll
