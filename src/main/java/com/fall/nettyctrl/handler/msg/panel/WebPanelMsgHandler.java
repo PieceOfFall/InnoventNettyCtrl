@@ -11,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import static java.lang.StringTemplate.STR;
 
 /**
  * 控制面板消息处理器
@@ -48,7 +47,7 @@ public class WebPanelMsgHandler implements IMsgHandler {
             String operation = webPanelMsg.getOperation();
 
             if ("ping".equals(operation)) return;
-            ctx.channel().writeAndFlush(new TextWebSocketFrame(responseUtil.notAlert(STR."后端接收成功: \{webPanelMsg}")));
+            ctx.channel().writeAndFlush(new TextWebSocketFrame(responseUtil.notAlert("后端接收成功:" + webPanelMsg)));
 
             IOperationHandler operationHandler = switch (target) {
                 case "computer" -> "poweron".equals(operation) ? computerPowerOnHandler : computerPowerOffHandler;

@@ -26,10 +26,12 @@ public class LedHandler implements IOperationHandler {
 
     @Override
     public void handleOperation(WebPanelMsg webPanelMsg) {
+        String operatedId = webPanelMsg.getOperation();
         Integer operationParam = (Integer) webPanelMsg.getOperationParam();
 
         String completeCommand = command
-                .replace("{id}", operationParam.toString());
+                .replace("{id}", operatedId)
+                .replace("{command}", operationParam.toString());
         tcpClient.sendMsg(ip, port, completeCommand);
     }
 }

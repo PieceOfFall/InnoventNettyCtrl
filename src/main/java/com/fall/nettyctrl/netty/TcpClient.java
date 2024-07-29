@@ -59,7 +59,7 @@ public class TcpClient {
             channel.writeAndFlush(buffer).sync();
             channel.closeFuture();
         } catch (Exception e) {
-            WebSocketServerHandler.broadcastMessage(responseUtil.info(STR."后端发送[\{map.get(ip)}]指令异常"));
+            WebSocketServerHandler.broadcastMessage(responseUtil.info("后端发送[{"+map.get(ip)+"}]指令异常"));
             log.error("Error while sending TCP message: ", e);
             Thread.currentThread().interrupt();
         } finally {
