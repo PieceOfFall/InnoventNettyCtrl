@@ -2,6 +2,8 @@ package com.fall.nettyctrl.vo.positioning;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @author FAll
  * @date 2024年06月04日 10:09
@@ -9,12 +11,12 @@ import lombok.Data;
 @Data
 public class MediaCommand {
     private Integer id;
-    private String high;
-    private String medium;
-    private String low;
-    private String off;
+    private List<String> high;
+    private List<String> medium;
+    private List<String> low;
+    private List<String> off;
 
-    public String getCommand(String strength) {
+    public List<String> getCommand(String strength) {
         return switch (strength) {
             case "off" -> off;
             case "low" -> low;

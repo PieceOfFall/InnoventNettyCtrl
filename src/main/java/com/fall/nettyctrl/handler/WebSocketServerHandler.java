@@ -68,7 +68,6 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<TextWebS
 
     public static void broadcastMessage(String message) {
         TextWebSocketFrame frame = new TextWebSocketFrame(message);
-        var _ = channels;
         channels.writeAndFlush(frame);
     }
 }

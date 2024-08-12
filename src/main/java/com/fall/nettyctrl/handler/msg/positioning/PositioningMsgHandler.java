@@ -53,8 +53,11 @@ public class PositioningMsgHandler implements IMsgHandler {
                 var stationId = entry.getKey();
                 var mediaCommand = commands.get(stationId);
                 var commandHexStr = mediaCommand.getCommand(entry.getValue());
-                nettySender.sendMsgAsync(NettySender.hexStringToByteBuf(commandHexStr), mediaIp, mediaPort);
+
+                for (String singleCommand : commandHexStr)
+                    nettySender.sendMsgAsync(NettySender.hexStringToByteBuf(singleCommand), mediaIp, mediaPort);
             }
+
             log.info("Handle positioning message: " + positioningMsg.getPosMap());
         }
     }

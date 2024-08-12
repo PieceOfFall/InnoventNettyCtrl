@@ -62,7 +62,7 @@ public class WebSocketServer {
         var channelFuture = serverBootstrap.bind(websocketServerPort).sync();
         // 添加关闭事件处理，优雅退出服务
         var closeFuture = channelFuture.channel().closeFuture();
-        closeFuture.addListener(_ -> {
+        closeFuture.addListener(e -> {
             boss.shutdownGracefully();
             worker.shutdownGracefully();
             handlerGroup.shutdownGracefully();

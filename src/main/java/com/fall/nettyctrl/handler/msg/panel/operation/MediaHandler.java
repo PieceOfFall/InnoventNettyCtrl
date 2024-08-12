@@ -3,6 +3,7 @@ package com.fall.nettyctrl.handler.msg.panel.operation;
 import com.fall.nettyctrl.handler.msg.panel.IOperationHandler;
 import com.fall.nettyctrl.netty.NettySender;
 import com.fall.nettyctrl.vo.panel.WebPanelMsg;
+import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,12 @@ public class MediaHandler implements IOperationHandler {
     @Autowired
     MediaHandler(NettySender udpSender) {
         this.udpSender = udpSender;
+    }
+
+    @PostConstruct
+    private void initMode(){
+        if("normal".equals(mode))
+            switchNormalMode();
     }
 
     @Override
