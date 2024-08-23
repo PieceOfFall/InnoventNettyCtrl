@@ -63,7 +63,11 @@ public class WebPanelMsgHandler implements IMsgHandler {
                 case "sequential" -> sequentialHandler;
                 default -> throw new IllegalStateException("Unexpected target: " + target);
             };
-            operationHandler.handleOperation(webPanelMsg);
+            try {
+                operationHandler.handleOperation(webPanelMsg);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

@@ -38,7 +38,7 @@ public class TcpClient {
     private Integer timeout;
 
     @Setter
-    private LinkedHashMap<String,String> map;
+    private LinkedHashMap<String, String> map;
 
     private final ResponseUtil responseUtil;
 
@@ -49,7 +49,7 @@ public class TcpClient {
 
     @Async
     public void sendMsg(String ip, int port, String message) {
-        log.info(message);
+        log.info("{}: {}", ip, message);
         NioEventLoopGroup group = new NioEventLoopGroup();
         try {
             Bootstrap bootstrap = initTcpClientBootStrap(group);
@@ -59,7 +59,7 @@ public class TcpClient {
             channel.writeAndFlush(buffer).sync();
             channel.closeFuture();
         } catch (Exception e) {
-            WebSocketServerHandler.broadcastMessage(responseUtil.info("后端发送[{"+map.get(ip)+"}]指令异常"));
+            WebSocketServerHandler.broadcastMessage(responseUtil.info("后端发送[{" + map.get(ip) + "}]指令异常"));
             log.error("Error while sending TCP message: ", e);
             Thread.currentThread().interrupt();
         } finally {
@@ -69,7 +69,7 @@ public class TcpClient {
 
     @Async
     public void sendMsg(String ip, int port, ByteBuf message) {
-        log.info(ByteBufUtil.hexDump(message));
+        log.info("{}: {}", ip, ByteBufUtil.hexDump(message));
         NioEventLoopGroup group = new NioEventLoopGroup();
         try {
             Bootstrap bootstrap = initTcpClientBootStrap(group);
@@ -97,7 +97,7 @@ public class TcpClient {
                     }
                 });
         bootstrap.option(ChannelOption.CONNECT_TIMEOUT_MILLIS, timeout);
-        return  bootstrap;
+        return bootstrap;
     }
 
 

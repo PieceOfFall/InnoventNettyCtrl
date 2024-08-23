@@ -39,10 +39,10 @@ public class WebSocketServer {
 
         log.info("websocket server init ...");
 
-        var boss = new NioEventLoopGroup();
-        var worker = new NioEventLoopGroup();
+        var boss = new NioEventLoopGroup(16);
+        var worker = new NioEventLoopGroup(16);
 
-        var handlerGroup = new DefaultEventLoopGroup();
+        var handlerGroup = new DefaultEventLoopGroup(16);
 
         var serverBootstrap = new ServerBootstrap();
         serverBootstrap
