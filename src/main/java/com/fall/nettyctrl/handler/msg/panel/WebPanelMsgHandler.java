@@ -35,6 +35,7 @@ public class WebPanelMsgHandler implements IMsgHandler {
     private final ScreenHandler screenHandler;
     private final RelayHandler relayHandler;
     private final SequentialHandler sequentialHandler;
+    private final MonitorHandler monitorHandler;
 
 
     private final ResponseUtil responseUtil;
@@ -61,6 +62,7 @@ public class WebPanelMsgHandler implements IMsgHandler {
                 case "big-screen" -> bigScreenHandler;
                 case "screen" -> screenHandler;
                 case "sequential" -> sequentialHandler;
+                case "monitor" -> monitorHandler;
                 default -> throw new IllegalStateException("Unexpected target: " + target);
             };
             try {
