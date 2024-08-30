@@ -49,7 +49,7 @@ public class TcpClient {
 
     @Async
     public void sendMsg(String ip, int port, String message) {
-        log.info("{}: {}", ip, message);
+        log.info("[tcp] {}: {}", ip, message);
         NioEventLoopGroup group = new NioEventLoopGroup();
         try {
             Bootstrap bootstrap = initTcpClientBootStrap(group);
@@ -69,7 +69,7 @@ public class TcpClient {
 
     @Async
     public void sendMsg(String ip, int port, ByteBuf message) {
-        log.info("{}: {}", ip, ByteBufUtil.hexDump(message));
+        log.info("[tcp] {}: {}", ip, ByteBufUtil.hexDump(message));
         NioEventLoopGroup group = new NioEventLoopGroup();
         try {
             Bootstrap bootstrap = initTcpClientBootStrap(group);

@@ -2,6 +2,8 @@ package com.fall.nettyctrl.netty;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufUtil;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInitializer;
@@ -10,6 +12,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.DatagramChannel;
 import io.netty.channel.socket.DatagramPacket;
 import io.netty.channel.socket.nio.NioDatagramChannel;
+import io.netty.util.CharsetUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -64,7 +67,16 @@ public class UdpClient {
             @Async
             @Override
             public void sendMsgAsync(ByteBuf buffer, String ip, Integer port) {
+                log.info("[udp] {}: {}",ip, ByteBufUtil.hexDump(buffer));
                 udpClientChannel.writeAndFlush(new DatagramPacket(buffer,
+                        new InetSocketAddress(ip, port)));
+            }
+
+            @Async
+            @Override
+            public void sendMsgAsync(String message, String ip, Integer port) {
+                log.info("[udp] {}: {}",ip,message);
+                udpClientChannel.writeAndFlush(new DatagramPacket(Unpooled.copiedBuffer(message, CharsetUtil.UTF_8),
                         new InetSocketAddress(ip, port)));
             }
         };

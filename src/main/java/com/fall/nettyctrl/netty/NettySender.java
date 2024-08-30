@@ -3,9 +3,10 @@ package com.fall.nettyctrl.netty;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 
-@FunctionalInterface
 public interface NettySender {
     void sendMsgAsync(ByteBuf buffer, String ip, Integer port);
+
+    void sendMsgAsync(String message, String ip, Integer port);
 
     static byte[] hexStringToByteArray(String s) {
         int len = s.length();
