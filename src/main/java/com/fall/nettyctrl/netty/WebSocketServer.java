@@ -36,7 +36,6 @@ public class WebSocketServer {
 
     @PostConstruct
     public void initServer() throws InterruptedException{
-
         log.info("websocket server init ...");
 
         var boss = new NioEventLoopGroup(16);

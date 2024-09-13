@@ -49,7 +49,10 @@ public class TcpClient {
 
     @Async
     public void sendMsg(String ip, int port, String message) {
-        log.info("[tcp] {}: {}", ip, message);
+        if(!"ping".equals(message)) {
+            log.info("[tcp] {}: {}", ip, message);
+        }
+
         NioEventLoopGroup group = new NioEventLoopGroup();
         try {
             Bootstrap bootstrap = initTcpClientBootStrap(group);

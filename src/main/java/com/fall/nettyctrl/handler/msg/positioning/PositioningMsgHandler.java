@@ -39,7 +39,6 @@ public class PositioningMsgHandler implements IMsgHandler {
     private Integer mediaPort;
 
 
-
     @Autowired
     public PositioningMsgHandler(NettySender nettySender,MediaHandler mediaHandler) {
         this.nettySender = nettySender;

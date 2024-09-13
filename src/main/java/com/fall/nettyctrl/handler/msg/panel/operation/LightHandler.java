@@ -2,6 +2,7 @@ package com.fall.nettyctrl.handler.msg.panel.operation;
 
 import com.fall.nettyctrl.handler.msg.panel.IOperationHandler;
 import com.fall.nettyctrl.netty.NettySender;
+import com.fall.nettyctrl.netty.TcpClient;
 import com.fall.nettyctrl.vo.panel.WebPanelMsg;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,20 +24,20 @@ public class LightHandler implements IOperationHandler {
     @Value("${web-panel.light.port}")
     private Integer port;
 
-    private final NettySender nettySender;
+    private final TcpClient tcpClient;
 
     @Override
     public void handleOperation(WebPanelMsg webPanelMsg) {
         String operation = webPanelMsg.getOperation();
 
-        nettySender.sendMsgAsync(operation, ip, port);
+        tcpClient.sendMsg(ip, port,operation);
 
         new Thread(() -> {
             try {
                 Thread.sleep(2000);
-                nettySender.sendMsgAsync(
-                        NettySender.hexStringToByteBuf("poweron".equals(operation) ? "01" : "00"),
-                        ip, port);
+                tcpClient.sendMsg(
+                        ip, port,
+                        NettySender.hexStringToByteBuf("poweron".equals(operation) ? "01" : "00"));
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
