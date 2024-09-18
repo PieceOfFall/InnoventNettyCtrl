@@ -72,6 +72,5 @@ public class MediaHandler implements IOperationHandler {
             this.mode = "normal";
         }
 
-
     }
 

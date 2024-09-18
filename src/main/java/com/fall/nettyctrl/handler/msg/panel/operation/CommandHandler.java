@@ -8,6 +8,8 @@ import com.fall.nettyctrl.vo.panel.WebPanelMsg;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.LinkedHashMap;
+
 /**
  * @author FAll
  * @date 2024/9/12 13:02
@@ -22,8 +24,14 @@ public class CommandHandler implements IOperationHandler {
     @Override
     public void handleOperation(WebPanelMsg webPanelMsg) {
         String operation = webPanelMsg.getOperation();
-        CommandParam commandParam = (CommandParam) webPanelMsg.getOperationParam();
+        LinkedHashMap<String,Object> commandParamMap = (LinkedHashMap<String,Object>) webPanelMsg.getOperationParam();
 
+        CommandParam commandParam = CommandParam.builder()
+                .ip((String) commandParamMap.get("ip"))
+                .port((Integer) commandParamMap.get("port"))
+                .isHex((Boolean) commandParamMap.get("isHex"))
+                .data((String) commandParamMap.get("data"))
+                .build();
         if("tcp".equals(operation)) {
            if(commandParam.getIsHex()) {
                tcpClient.sendMsg(
