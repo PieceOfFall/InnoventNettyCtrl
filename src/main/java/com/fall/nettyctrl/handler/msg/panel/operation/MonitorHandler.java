@@ -19,6 +19,6 @@ public class MonitorHandler implements IOperationHandler {
     @Override
     public void handleOperation(WebPanelMsg webPanelMsg) {
         String operation = webPanelMsg.getOperation();
-        tcpClient.sendMsg("127.0.0.1", 8686, operation);
+        tcpClient.sendMsg("192.168.5.18", 8686, operation);
     }
 }

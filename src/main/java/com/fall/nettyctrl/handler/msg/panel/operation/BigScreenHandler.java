@@ -45,11 +45,7 @@ public class BigScreenHandler implements IOperationHandler {
                         bigScreenParam.getPoweroff();
                 for (String singleCmd : commandStr) {
                     ByteBuf byteBufMsg = TcpClient.hexStringToByteBuf(singleCmd);
-                    if ("welcome".equals(id)) {
-                        udpSender.sendMsgAsync(byteBufMsg, ip, port);
-                    } else {
-                        tcpClient.sendMsg(ip, port, byteBufMsg);
-                    }
+                    tcpClient.sendMsg(ip, port, byteBufMsg);
                 }
                 break;
             }
